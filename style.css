@@ -1,0 +1,31 @@
+table {
+    text-align: center;
+}
+
+table, th, td {
+    border: 2px solid black;
+}
+
+tr {
+    height: 55px;
+}
+
+td {
+    background-color: #999999;
+}
+
+col {
+    width: 45px;
+}
+
+#col-affichage {
+    background-color: #ffffff;
+}
+
+#affichage {
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 20px;	
+    background-color: #ffffff;
+}
