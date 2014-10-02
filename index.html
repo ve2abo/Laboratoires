@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html>
-    <head lang="en">
-        <meta charset="UTF-8">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Laboratoire 5 - Pense-bête</title>
-        <link rel="stylesheet" href="style.css">
 
-        <!-- Nécessaire pour forcer les cellulaire a respecter leur taille d'écran -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
     <body>
-        <div class="main">
-            Pense-bête
-        </div>
+        <div class="container-fluid">
+            <h1>Laboratoire 5 - Pense-bête</h1>
 
-        <!-- Nécessaire pour l'exécution du Javascript -->
-        <script src="app.js"></script>
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading">Liste de taches</div>
+        
+              <!-- Table -->
+              <table id="tasktable" class="table table-hover">
+                <th>
+                    
+                </th>
+
+              </table>
+            </div>
+    
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="js/bootstrap.min.js"></script>
+
+            <!-- Page specific javascript -->
+            <script src="app.js"></script>
+        </div>
     </body>
 </html>
