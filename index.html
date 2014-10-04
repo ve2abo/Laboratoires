@@ -10,37 +10,62 @@
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- other style considerations -->
+        <link href="style.css" rel="stylesheet">
+
+        <!-- jQuery -->
+        <script src="./js/jquery-1.11.1.js"></script>
+
+        <!-- Page specific javascript -->
+        <script src="./app.js"></script>
     </head>
     <body>
         <div class="container-fluid">
             <h1>Laboratoire 5 - Pense-bête</h1>
 
             <div class="panel panel-default">
-              <!-- Default panel contents -->
-              <div class="panel-heading">Liste de taches</div>
+                <!-- Default panel contents -->
+                <div class="panel-heading">Liste de tâches</div>
         
-              <!-- Table -->
-              <table id="tasktable" class="table table-hover">
-                <th>
-                    
-                </th>
-
-              </table>
-            </div>
+                <!-- Table -->
+                <table class="table table-hover">
+                    <colgroup>
+                        <col id='Col1'>
+                        <col id='Col2'>
+                    </colgroup>                    
+                    <tbody id="tasktable">
+<!--
+                    <tr>
+                        <td>123</td>
+                        <td>test_val</td>
+                        <td id="actionTD"><span class="glyphicon glyphicon-edit"></span><span class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+-->
+                    </tbody>
+                </table>
+                <div class="panel-footer">
+                    <div class="input-group" id='divAjouterTexte'>
+                        <input type="text" class="form-control" id="txtNouvTache">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" id="boutonAjouter">Ajouter</button>
+                        </span>
+                    </div>
+<!--
+                    <form>
+                        <input type="text" id="txtNouvTache">
+                    </form>
+                    <div id="boutonAjouter">
+                        Ajouter
+                    </div>
+-->
+                </div> <!-- panel-footer -->
+            </div> <!-- panel -->
     
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <script src="js/bootstrap.min.js"></script>
 
-            <!-- Page specific javascript -->
-            <script src="app.js"></script>
         </div>
     </body>
 </html>
