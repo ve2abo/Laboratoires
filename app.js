@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 $('#boutonAjouter').click(function(event){
-    postTask({ task: $('#txtNouvTache').val()});
+    postListesLectures({ task: $('#txtNouvListesLectures').val()});
 })
 
-function getTasks() {
+function getListesLectures() {
     //demander les tâches
     $.ajax({
         url:'http://localhost:5000/tasks',
@@ -14,35 +14,21 @@ function getTasks() {
         //Une fois les données reçu...
         
         //vider la table des données actuelles
-        $('#tasktable').empty();
+        $('#tableListesLectures').empty();
 
         //Boucler sur l'array 'tasks' pour remplir la table
         //Donner au tr (tablerow) le meme id que la tâche
         for (var i=0; i<data.tasks.length; i++) {
-            $('#tasktable').append('<tr id="' + data.tasks[i].id + '"> \
-                                        <td class="input-group"> \
-                                            <input type="text" class="form-control"> \
-                                            <span class="input-group-btn"> \
-                                                <button class="btn btn-primary" type="button"> \
-                                                    <span class="glyphicon glyphicon-floppy-disk"></span> \
-                                                </button> \
-                                            </span> \
+            $('#tableListesLectures').append('<tr class="tableRowItem" id="' + data.tasks[i].id + '"> \
+                                        <td class="listname"> \
+                                            ' + data.tasks[i].task + ' \
                                         </td> \
-                                        <td id="actionTD"> \
-                                            <span class="glyphicon glyphicon-trash"></span> \
+                                        <td>\
+                                            <span class="glyphicon glyphicon-trash"></span>\
+                                            <span class="glyphicon glyphicon-pencil"></span>\
                                         </td> \
                                     </tr>');
-            $('#'+data.tasks[i].id+' .form-control').val(data.tasks[i].task);
         }
-
-
-        $('.glyphicon-floppy-disk').click(function() {
-            var parentBtn = $(this).parent().parent().parent().parent();
-            var parentTxt = $(this).parent().parent().parent().find(".form-control");
-            console.log($('#'+extractId(parentBtn)+' .form-control').val());
-            putTask(extractId(parentBtn), {task: $('#'+extractId(parentBtn)+' .form-control').val()});
-        })
-
 
         //Programmer le click pour l'icone "trash"
         $('.glyphicon-trash').click(function(){
@@ -50,9 +36,43 @@ function getTasks() {
             var gparent = $(this).parent().parent(); 
             
             //appeler la fonction avec comme param l'id 
-            deleteTask(extractId(gparent));
+            deleteListesLectures(extractId(gparent));
         })
       
+        //Programmer le click pour l'icone "edit"
+        $('.glyphicon-pencil').click(function(){
+            //aller chercher l'element qui contient l'id
+            var id = extractId($(this).parent().parent())
+            var listname = $.trim($('#'+id+' .listname').text());
+            
+            //Modifier le contenu du tr pour avoir un champ d'édition avec un bouton save
+            $('#'+id).html('<td colspan=2 class="input-group input-group-sm"> \
+                                <input type="text" class="form-control"> \
+                                    <span class="input-group-btn"> \
+                                        <button class="btn btn-primary" type="button"> \
+                                            <span class="glyphicon glyphicon-floppy-disk"></span> \
+                                        </button> \
+                                    </span> \
+                            </td> \
+                            <td> \
+                                <span id="modifPoubelle" class="glyphicon glyphicon-trash"></span> \
+                            </td> ');
+            $('#'+id+' .form-control').val(listname);
+
+            //Programmer le bouton save
+            $('.glyphicon-floppy-disk').click(function() {
+                var parentBtn = $(this).parent().parent().parent().parent();
+                var parentTxt = $(this).parent().parent().parent().find(".form-control");
+                putListesLectures(extractId(parentBtn), {task: $('#'+extractId(parentBtn)+' .form-control').val()});
+            })
+        })
+
+        //Programmer le double-click pour les items de la liste
+        $('.tableRowItem').click(function() {
+            $('#table_listes_lectures').css('display','none');
+            $('#table_contenu_liste').css('display','block');
+        })
+
     })
     .fail(function(jqXHR, textStatus){
         //Do something about the error
@@ -60,7 +80,7 @@ function getTasks() {
     });
 }
 
-function postTask(data) {
+function postListesLectures(data) {
     $.ajax({
         url:'http://localhost:5000/tasks',
         type: 'POST',
@@ -69,8 +89,8 @@ function postTask(data) {
     })
     .done(function(data){
         //Do something with returned data
-        task: $('#txtNouvTache').val('');
-        getTasks();
+        task: $('#txtNouvListesLectures').val('');
+        getListesLectures();
     })
     .fail(function(jqXHR, textStatus){
         //Do something about the error
@@ -78,7 +98,7 @@ function postTask(data) {
     });
 }
 
-function putTask(id, data) {
+function putListesLectures(id, data) {
     $.ajax({
         url:'http://localhost:5000/tasks/'+parseInt(id),
         type: 'PUT',
@@ -87,7 +107,7 @@ function putTask(id, data) {
     })
     .done(function(data){
         //Do something with returned data
-        getTasks();
+        getListesLectures();
     })
     .fail(function(jqXHR, textStatus){
         //Do something about the error
@@ -95,14 +115,14 @@ function putTask(id, data) {
     });
 }
 
-function deleteTask(id) {
+function deleteListesLectures(id) {
     $.ajax({
         url:'http://localhost:5000/tasks/'+parseInt(id),
         type: 'DELETE',
     })
     .done(function(data){
         //Do something with returned data
-        getTasks();
+        getListesLectures();
     })
     .fail(function(jqXHR, textStatus){
         //Do something about the error
@@ -110,7 +130,7 @@ function deleteTask(id) {
     });
 }
 
-getTasks();
+getListesLectures();
 
 function extractId(element) {
     return element.attr('id');

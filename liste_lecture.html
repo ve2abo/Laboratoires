@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Listes de lectures</title>
+        <title>Listes de lecture : </title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,33 +17,11 @@
         <script src="./js/jquery-1.11.1.js"></script>
 
         <!-- Page specific javascript -->
-        <script src="./app.js"></script>
+        <script src="./liste_lecture.js"></script>
     </head>
     <body>
         <div class="container-fluid">
-            <div class="panel panel-default" id="table_listes_lectures">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Listes de lectures</div>
-        
-                <!-- Table -->
-                <table class="table table-hover">
-                    <colgroup>
-                        <col id='Col1'>
-                        <col id='Col2'>
-                    </colgroup>                    
-                    <tbody id="tableListesLectures"></tbody><!--Le contenu de la liste ajouté par javaScript est ajouté ici.-->
-                </table>
-                <div class="panel-footer">
-                    <div class="input-group" id='divAjouterListesLectures'>
-                        <input type="text" class="form-control" id="txtNouvListesLectures">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" id="boutonAjouterListe">Ajouter</button>
-                        </span>
-                    </div>
-                </div> <!-- panel-footer -->
-            </div> <!-- panel -->
-    
-            <div class="panel panel-default" id="table_contenu_liste">
+            <div class="panel panel-default">
                 <!-- Table -->
                 <table class="table table-hover">
                     <thead>
@@ -54,19 +32,26 @@
                             <th class="col-sm-1">Durée</th>
                         </tr>
                     </thead>
-                    <tbody id="tableContenuListe"></tbody><!--Le contenu de la liste de chanson ajouté par javaScript est ajouté ici.-->
+                    <!--<th>
+                        <colgroup>
+                            <col id="col_num_piste">#</col>
+                            <col id="col_titre">Titre</col>
+                            <col id="col_artiste">Artiste</col>
+                            <col id="col_duree">Durée</col>
+                        </colgroup>  
+                    </th>-->
+                    <tbody id="table"></tbody><!--Le contenu de la liste ajouté par javaScript est ajouté ici.-->
                 </table>
                 <div class="panel-footer">
                     <div class="input-group" id='divAjouterTexte'>
                         <input type="text" class="form-control" id="txtNouvTache">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" id="boutonAjouterItem">Ajouter</button>
+                            <button class="btn btn-primary" type="button" id="boutonAjouter">Ajouter</button>
                         </span>
                     </div>
                 </div> <!-- panel-footer -->
             </div> <!-- panel -->
-
-
+    
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
             <!-- Include all compiled plugins (below), or include individual files as needed -->
