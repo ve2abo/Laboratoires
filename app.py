@@ -32,7 +32,7 @@ def create_task():
         'task': request.json['task']
     }
     tasks.append(task)
-    return jsonify( { 'task': task } ), 201
+    return jsonify( { 'tasks': tasks } ), 201
 
 @app.route('/tasks', methods = ['GET'])
 def get_tasks():
@@ -53,7 +53,7 @@ def update_task(task_id):
     if 'task' in request.json and type(request.json['task']) is not unicode:
         abort(400)
     task[0]['task'] = request.json.get('task', task[0]['task'])
-    return jsonify( { 'task': task[0] } )
+    return jsonify( { 'tasks': tasks } )
 
 @app.route('/tasks/<int:task_id>', methods = ['DELETE'])
 def delete_task(task_id):
@@ -61,7 +61,7 @@ def delete_task(task_id):
     if len(task) == 0:
         abort(404)
     tasks.remove(task[0])
-    return jsonify( { 'result': True } )
+    return jsonify( { 'tasks': tasks } )
 
 if __name__ == '__main__':
     app.run(debug = True)
