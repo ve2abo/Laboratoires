@@ -1,17 +1,20 @@
-$(document).ready(function() {
+var cookie = $.cookie('cookie_authentification');
 
-	$(function() {
-		var collectionMeteoSemaine = new ColMeteoSemaine({});
-		collectionMeteoSemaine.url = 'http://api.wunderground.com/api/15ae1c769d01b0fd/lang:FR/pws:0/forecast7day/q/Canada/Montreal.json';
+if (typeof cookie === 'undefined') {
+	window.location.replace("./views/login.html");
+} else {
+    $.ajax({
+        url:'http://localhost:5000/userprofile',
+        type: 'GET',
+        contentType: "application/json;charset=UTF-8",
+        beforeSend : function (xhr) {
+        	xhr.setRequestHeader("Authorization", cookie);
+        }
+    })
+    .done(function(data){
+        //Do something with returned data
+        $('#profile_user').html("Utilisateur : " + data.username);
+        $('#profile_mail').html("Courriel : " + data.email);
+    });
 
-		var vueMeteoSemaine = new VueMeteoSemaine({
-			collection: collectionMeteoSemaine
-		});
-
-		var vueMeteoVille = new VueMeteoVille({	});  
-
-		collectionMeteoSemaine.fetch({dataType: 'jsonp'});
-		console.log(JSON.stringify(collectionMeteoSemaine));
-	});
-
-});
+}

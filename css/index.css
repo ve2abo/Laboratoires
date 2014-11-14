@@ -1,0 +1,14 @@
+#login_bouton_connexion {
+	margin-top: 16px;
+	padding-top: 6px;
+	width: 100px;
+	height: 24px;
+	text-align: center;
+	border: 1px solid #008fd5;
+    background-color: #008fd5;
+    color: #FFFFFF;
+    cursor: pointer;
+	border-radius: 4px;
+	font-family: 'Oxygen', sans-serif;
+    font-size: 12px;
+}
