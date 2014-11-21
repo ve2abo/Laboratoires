@@ -1,4 +1,4 @@
-#login_bouton_connexion {
+#bouton_message, #bouton_connexion {
 	margin-top: 16px;
 	padding-top: 6px;
 	width: 100px;
@@ -11,4 +11,47 @@
 	border-radius: 4px;
 	font-family: 'Oxygen', sans-serif;
     font-size: 12px;
+	display: inline;
+}
+
+#fenetre_chat {
+	display: none;
+}
+
+#textbox_message {
+	width: 400px;
+	}
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+.message {
+	margin-top: 26px;	
+}
+
+.user_message {
+	margin-top: 26px;
+	padding: 6px;
+	width: 100px;
+	height: 16px;
+	text-align: center;
+	border: 1px solid #008fd5;
+    background-color: #008fd5;
+    color: #FFFFFF;
+    cursor: pointer;
+	border-radius: 4px;
+	font-family: 'Oxygen', sans-serif;
+    font-size: 12px;
+	display: inline;
+}
+
+.contenu_message {
+	margin-top: 26px;
+	color: #000000;
+	font-family: 'Oxygen', sans-serif;
+    font-size: 12px;
+	display: inline;
+	padding: 6px;
 }

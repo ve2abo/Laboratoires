@@ -2,19 +2,32 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Lab 9 - User profile</title>
+	<title>Lab 10 - Chat Room</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
     <div id="info_user">
-	    <p id="profile_user"></p>
-	    <p id="profile_mail"></p>
+	    <h3>Connexion utilisateur</h3>
+	    <input id="textbox_user" type="text"></input>
+	    <div id="bouton_connexion">Connexion</div>
+	    <div id="label_erreur"></div>
 	</div>
 
-	<script src="./js/lib/jquery-1.11.1.js"></script>
-	<script src="./js/lib/jquery.base64.js"></script>
-	<script src="./js/lib/jquery.cookie.js"></script>
-	<script src="./js/index.js"></script>
+	<div id="fenetre_chat">
+		<h3>Chatroom</h3>
+		<ul id="liste_messages_chat"></ul>
+		<div id="controles">
+			<input id="textbox_message" type="text"></input>
+			<div id="bouton_message">
+				Envoyer message
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>
